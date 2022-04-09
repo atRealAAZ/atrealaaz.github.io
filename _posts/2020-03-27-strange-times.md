@@ -24,12 +24,12 @@ How quickly everything went. From a small announcement that we should please not
 
 These are strange times.
 
-It makes me think of my life, and work. As a quantitative risk modeller, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its foundations we are powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot manage.
+It makes me think of my life, and work. As a quantitative risk modeller, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its foundations we are powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot model.
 
 It should remind us that the highest-impact events are unpredictable. They are so rare that history cannot be our teacher. We simulate possible scenarios and prepare but this… no one could have foreseen. And if the unpredictable rare event has such an outsized impact, we have to wonder and reflect how much we can really do.
 
 
-This is a stark reminder that we should not pretend we can predict the future. Because if we pretend otherwise we become overconfident, and only then can we be blindsided by something like this. Perhaps we should focus not on trying to predict the future but on being prepared when fate strikes.
+This is a stark reminder that we should not pretend we can predict the future. Because if we pretend otherwise we become overconfident, and only then can we be blindsided by an event like this. Perhaps we should focus not on trying to predict the future but on being prepared when fate strikes.
 
 
 And in these times when we are farther from everyone than ever, it is of the utmost important that we remain strong and support each other. Because the need has never been greater than it is today. Only by sticking together do we get through this. The lone wolf dies, but the pack survives.
