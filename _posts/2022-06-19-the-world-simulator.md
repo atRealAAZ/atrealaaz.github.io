@@ -96,3 +96,4 @@ class World:
                 self.societies[idx] = Society.advance()
                 self.war(0.2)
 ```
+LEG AANNAMES EN RESULTASTEN EROMHEEN UIT
