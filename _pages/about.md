@@ -3,7 +3,7 @@ permalink: /about/
 title: "About"
 ---
 
-Hello there, if you are reading this apparently you are interested in who I am since you're reading the About section; or you just happened to accidentally somehow land here in which case, no worries. 
+Hello there, if you are reading this apparently you are interested in who I am - since you're reading the About section - or you just happened to accidentally somehow land here; in which case, no worries. 
 
 Welcome! 
 

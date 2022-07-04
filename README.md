@@ -1,3 +1,12 @@
+# Pers notes
+Go to folder: C:\Users\aazwa\Documents\Projects\Site\Production\atrealaaz.github.io in VSCode
+Run bundle exec jekyll serve --baseurl="" for localhosting
+Make changes in files until satisfaction.
+Standard #Gitflow
+Changes are synced online after a few minutes
+
+
+
 # Minimal Mistakes remote theme starter
 
 Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
