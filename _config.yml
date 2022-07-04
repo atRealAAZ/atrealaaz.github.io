@@ -58,6 +58,12 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-E5JD6RQFCQ"
+    anonymize_ip: false # default
+
 author:
   name   : "Arthur Zwartsenberg"
   avatar : "/assets/images/pic.jpg"
@@ -66,12 +72,18 @@ author:
     - label: "LinkedIn"
       icon: "fas fa-fw fa-link"
       url: "https://www.linkedin.com/in/arthur-zwartsenberg-46683288/"
+    - label: "Twitter"
+      icon: "fas fa-fw fa-link"
+      url: "https://twitter.com/zwartsenberg"
 
 footer:
   links:
     - label: "LinkedIn"
       icon: "fas fa-fw fa-link"
       url: "https://www.linkedin.com/in/arthur-zwartsenberg-46683288/"
+    - label: "Twitter"
+      icon: "fas fa-fw fa-link"
+      url: "https://twitter.com/zwartsenberg"
 
 defaults:
   # _posts
