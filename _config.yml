@@ -62,7 +62,6 @@ analytics:
   provider: "google-gtag"
   google:
     tracking_id: "G-E5JD6RQFCQ"
-    anonymize_ip: false # default
 
 author:
   name   : "Arthur Zwartsenberg"
