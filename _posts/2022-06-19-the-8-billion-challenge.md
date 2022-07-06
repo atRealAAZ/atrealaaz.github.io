@@ -30,21 +30,39 @@ For that, we need to know how many people are alive at any point, to know how ma
 ```ruby
 class World:
     
-    def __init__(self, population, fertility_rate, mortality_rate):
+    def __init__(
+      self, 
+      population, 
+      fertility_rate, 
+      mortality_rate
+    ):
         self.population = population
         self.fertility_rate = fertility_rate
         self.mortality_rate = mortality_rate
         
-    def evolve(self, years):
-        for year in range(1, years + 1):
+    def evolve(
+      self, 
+      years
+    ):
+        for year in range(
+          1, 
+          years + 1
+        ):
             self.population += (
-                self._transform_rate(self.fertility_rate) - 
-                self._transform_rate(self.mortality_rate)
+                self._transform_rate(
+                  self.fertility_rate
+                ) - 
+                self._transform_rate(
+                  self.mortality_rate
+                )
             )
         return self.population
         
-    def _transform_rate(self, rate):
-        return self.population/1000 * rate
+    def _transform_rate(
+      self, 
+      rate
+    ):
+      return self.population/1000 * rate
 ```
 Of course this model is quite rudimentary. This assumes that the fertility and mortality rates stay constant, which they of course do not. The advent of progress means that mortality rates go down when life quality goes up, and fertility rates go down since progress means less children on average. But I'll make that assumption, otherwise this exercise would turn into 'create an accurate model for world population' which is not the goal here. 
 
