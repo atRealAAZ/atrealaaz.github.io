@@ -25,8 +25,7 @@ This means you have "just" talked to 7.9 billion people. But in 50 years some of
 
 So you decide to aim for a point at which you have talked to the entire population alive. 
 
-For that, we need to know how many people are alive at any point, to know how many people have been alive during a certain period. To do that, we fit a simple model to predict the world population at time *t*. This model is dependent on the current population, how many people are born each year (the *fertility rate*), and how many people die (the *mortality rate*). We construct it as per below, where each year the population increases by the amount of people that are born and decreases by the amount of deaths. 
-
+For that, we need to know how many people are alive at any point, to know how many people have been alive during a certain period. To do that, we fit a simple model to predict the world population at time *t*. This model is dependent on the current population, how many people are born each year (the *fertility rate*), and how many people die (the *mortality rate*). We construct it as per below, where each year the population increases by the amount of people that are born and decreases by the amount of people that pass.
 ```ruby
 class World:
     
