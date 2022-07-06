@@ -67,11 +67,17 @@ Of course this model is quite rudimentary. This assumes that the fertility and m
 
 We can then make a yearly prediction of the population by instantiating a class, which we initialize with the current population, and the global fertility and mortality rates per thousand people as given by the <a href="https://data.worldbank.org/indicator/SP.DYN.CBRT.IN">World</a> <a href="https://data.worldbank.org/indicator/SP.DYN.CDRT.IN">Bank</a>.
 ```python
-w = World(7.9E9, 18.1, 7.7)
+w = World(
+  7.9E9, 
+  18.1, 
+  7.70
+)
 ```
 We can then get a prediction per year for the next 50 years. 
 ```python
-w.evolve(50)
+w.evolve(
+  50
+)
 ```
 We now know how many people are alive in any year. Since achieving our goal will take 50 years, we need to know how many people have been alive during those 50 years. What we can then do, is to take the current population, and then each year add the new people that are born and subtract the people that die. So now there's 7.9 billion people, and the model predicts that next year there will be 7.98 billion. So that means next year we have to get to know 80 million people more (= new births - deaths). 
 
