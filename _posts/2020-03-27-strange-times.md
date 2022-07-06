@@ -24,7 +24,7 @@ How quickly everything went. From a small announcement that we should please not
 
 These are strange times.
 
-It makes me think of life, and work. As a quantitative risk modeller, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its foundations we are powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot model.
+It makes me think of life, and work. As a modeller of risk, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its foundations we are powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot model.
 
 It should remind us that the highest-impact events are unpredictable. They are so rare that history cannot be our teacher. We simulate possible scenarios and prepare but this… no one could have foreseen. And if the unpredictable rare event has such an outsized impact, we have to wonder and reflect how much we can really do.
 
