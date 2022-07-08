@@ -61,7 +61,9 @@ class World:
       self, 
       rate
     ):
-      return self.population/1000 * rate
+      return (
+        self.population/1000
+      ) * rate
 ```
 Of course this model is quite rudimentary. This assumes that the fertility and mortality rates stay constant, which they of course do not. The advent of progress means that mortality rates go down when life quality goes up, and fertility rates go down since progress means less children on average. But I'll make that assumption, otherwise this exercise would turn into 'create an accurate model for world population' which is not the goal here. 
 
