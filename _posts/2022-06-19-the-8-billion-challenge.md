@@ -25,36 +25,61 @@ This means you have "just" talked to 7.9 billion people. But in 50 years some of
 
 So you decide to aim for a point at which you have talked to the entire population alive. 
 
-For that, we need to know how many people are alive at any point, to know how many people have been alive during a certain period. To do that, we fit a simple model to predict the world population at time *t*. This model is dependent on the current population, how many people are born each year (the *fertility rate*), and how many people die (the *mortality rate*). We construct it as per below, where each year the population increases by the amount of people that are born and decreases by the amount of deaths. 
-
+For that, we need to know how many people are alive at any point, to know how many people have been alive during a certain period. To do that, we fit a simple model to predict the world population at time *t*. This model is dependent on the current population, how many people are born each year (the *fertility rate*), and how many people die (the *mortality rate*). We construct it as per below, where each year the population increases by the amount of people that are born and decreases by the amount of people that pass.
 ```ruby
 class World:
     
-    def __init__(self, population, fertility_rate, mortality_rate):
+    def __init__(
+      self, 
+      population, 
+      fertility_rate, 
+      mortality_rate
+    ):
         self.population = population
         self.fertility_rate = fertility_rate
         self.mortality_rate = mortality_rate
         
-    def evolve(self, years):
-        for year in range(1, years + 1):
+    def evolve(
+      self, 
+      years
+    ):
+        for year in range(
+          1, 
+          years + 1
+        ):
             self.population += (
-                self._transform_rate(self.fertility_rate) - 
-                self._transform_rate(self.mortality_rate)
+                self._transform_rate(
+                  self.fertility_rate
+                ) - 
+                self._transform_rate(
+                  self.mortality_rate
+                )
             )
         return self.population
         
-    def _transform_rate(self, rate):
-        return self.population/1000 * rate
+    def _transform_rate(
+      self, 
+      rate
+    ):
+      return (
+        self.population/1000
+      ) * rate
 ```
 Of course this model is quite rudimentary. This assumes that the fertility and mortality rates stay constant, which they of course do not. The advent of progress means that mortality rates go down when life quality goes up, and fertility rates go down since progress means less children on average. But I'll make that assumption, otherwise this exercise would turn into 'create an accurate model for world population' which is not the goal here. 
 
 We can then make a yearly prediction of the population by instantiating a class, which we initialize with the current population, and the global fertility and mortality rates per thousand people as given by the <a href="https://data.worldbank.org/indicator/SP.DYN.CBRT.IN">World</a> <a href="https://data.worldbank.org/indicator/SP.DYN.CDRT.IN">Bank</a>.
 ```python
-w = World(7.9E9, 18.1, 7.7)
+w = World(
+  7.9E9, 
+  18.1, 
+  7.70
+)
 ```
 We can then get a prediction per year for the next 50 years. 
 ```python
-w.evolve(50)
+w.evolve(
+  50
+)
 ```
 We now know how many people are alive in any year. Since achieving our goal will take 50 years, we need to know how many people have been alive during those 50 years. What we can then do, is to take the current population, and then each year add the new people that are born and subtract the people that die. So now there's 7.9 billion people, and the model predicts that next year there will be 7.98 billion. So that means next year we have to get to know 80 million people more (= new births - deaths). 
 
@@ -66,7 +91,7 @@ So, to reach a point in your lifetime where you have spoken to every person aliv
 
 So that's it. Even though it will not last long - since every second four new people are born and two die - for a moment (literally) you will have known... everyone. "Do you know person X?" will be a pointless question to ask you, because you do. "Do you know..." "Yes", you interrupt. "But I didn't finish my sentence!", the other replies. "Doesn't matter, I know them". Every time you hear a gossip, from anyone, you'll be like... "Ah I know this person!" Everytime someone has a problem, you'll know the perfect person to solve it for them. Your network will be huge. Not just huge, literally all-encompassing. Some people have a huge network. Well, now you are a step above that. How would you call that? Your network is full? Complete? All-encompassing? You would be able to meet your theoretical perfect match on this planet. Assuming that person is not already accounted for. You would know who could be your best friends. Your best matches. It would be interesting. 
 
-But it would also be a strange experience, to know literally everyone. And to have everyone know you. You would be a supercelebrity, a hyperstar, more so than current celebrities who are recognized only by the developed world, because literally everyone on this planet would know who you are. Everytime you go shopping, or for a walk, you'd see acquaintances everywhere. No, everywhere there would *be* acquaintances, behind every corner, every house. No matter where you go on this Earth, to the outskirts of civilization, you would be recognized. From the driest desert to the highest mountain to the deepest jungle, where there would be people there would be recognition. If you venture to the biggest gathering of people possible, a stadium housing tens of thousands, *everyone* would know you. You'd be like, are they watching me or the match? 
+But it would also be a strange experience, to know literally everyone. And to have everyone know you. You would be a supercelebrity, a hyperstar, more so than current celebrities who are recognized only by the developed world, because literally everyone on this planet would know who you are. Everytime you go shopping, or for a walk, you'd see acquaintances everywhere. No, everywhere there would *be* acquaintances, behind every corner, behind every house. No matter where you go on this Earth, to the outskirts of civilization, to the edges of the farthest reachest of the end of the world, you would be recognized. From the driest desert to the highest mountain to the deepest jungle, where there would be people there would be recognition. Or if you venture to the biggest gathering of people possible, a stadium housing tens of thousands, *everyone* would know you. You'd be like, are they watching me or the match? Imagine all those people looking at you. You better not have any stage fright then. 
 
 It would also be quite tiring. If you meet someone you know on the street, you have a quick chat. But to have to do this with literally everyone you pass? Quite difficult. Or that feeling when you get on a bus and you recognize someone, but you have no desire to talk to that person so you pretend to not notice them and go sit somewhere else? Well good luck, wherever you're going to sit you're going to know them. So superfame would not actually be a nice thing. Anonymity is valuable, it turns out.
 

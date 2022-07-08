@@ -10,7 +10,7 @@ On planet Earth, one species has reigned supreme, its position as the ultimate a
 
 Us.
 
-No life-form in the history of life has managed to ditch the shackles of its gravitational prison and go to space, but we have. No organism can split the atom, but we can.
+No life-form in the history of life has managed to ditch the shackles of its gravitational prison and gone to space, but we have. No organism can split the atom, but we can.
 
 Yet now there is a life-form, barely even considered alive, which handicaps the very ability that made us so successful in the first place…
 
@@ -24,7 +24,7 @@ How quickly everything went. From a small announcement that we should please not
 
 These are strange times.
 
-It makes me think of my life, and work. As a quantitative risk modeller, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its foundations we are powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot model.
+It makes me think of life, and work. As a modeller of risk, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its very foundation: we are powerless. Powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot model. The true risk, we cannot manage.
 
 It should remind us that the highest-impact events are unpredictable. They are so rare that history cannot be our teacher. We simulate possible scenarios and prepare but this… no one could have foreseen. And if the unpredictable rare event has such an outsized impact, we have to wonder and reflect how much we can really do.
 
