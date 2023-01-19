@@ -44,18 +44,170 @@ We add the following code:
 import {Component} from 'react'
 
 class Overview extends Component {
-    render () {
-        return (
-            <>
-                <AccountInformation/>
-                <TransactionTable/>
-            </>
-        )
-    }
+  render () {
+    return (
+      <>
+        <AccountInformation/>
+        <TransactionTable/>
+      </>
+    )
+  }
 }
 
 export default Overview
 ```
 We now have our boilerplate code that will contain the rest of our functions.
 
+We now add the placeholders for our two lower level components:
 
+```javascript
+class Overview extends Component {
+  render () {
+    return (
+      <>
+        <AccountInformation/>
+        <TransactionTable/>
+      </>
+    )
+  }
+}
+
+class AccountInformation extends Component {
+  render () {
+    return (
+      <>
+      </>
+    )
+  }
+}
+
+class TransactionTable extends Component {
+  render () {
+    return (
+      <>
+      </>
+    )
+  }
+} 
+
+export default Overview
+```
+We will now start filling in our Components. 
+
+We will use the ```Table``` component from ```react-bootstrap```.
+
+```react-bootstrap``` is a React extension of the ```bootstrap``` framework, which is a web framework that allows for easy re-use of prebuilt components. We install it by running  
+
+```
+npm install react-bootstrap
+```
+in the terminal. We then add the following code:
+
+```javascript
+class AccountInformation extends Component {
+  render () {
+    return (
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Account Number</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mr. My Name</td>
+            <td>0123456789</td>
+            <td>100</td>
+          </tr>
+        </tbody>
+      </Table>
+    )
+  }
+}
+```
+
+We then move back to ```App.js``` and add 
+```
+import Overview from './subcomponents/overview/Overview'
+```
+add the top, so that the App can use the Overview component. We also add our imported Overview component and put it in the App function. Our ```App.js```
+will then look like this:
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+import './App.css';
+import Overview from './subcomponents/overview/Overview'
+
+function App() {
+  return (
+    <>
+      <Overview/>
+    </>
+  );
+}
+
+export default App;
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+This also ensures that by making changes in ```Overview.js``` and saving, our entire application is re-rendered.
+
+Checking our application, we see the following:
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/account_info.png" alt="">
+
+Quite ugly, but it works!
+
+Let's also fill in the Transaction table. The information we would like to see is how many transactions there have been, from and to which accounts the money has been transferred, the amount, the currency, the category, and on which date the transaction occurred. Let's fill this in, with a placeholder for one transaction:
+
+
+{% capture notice-3 %}
+frontend/src/subcomponents/overview/Overview.js
+```javascript
+...
+
+class TransactionTable extends Component {
+  render () {
+    return (
+      <>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>From Account</th>
+              <th>To Account</th>
+              <th>Amount</th>
+              <th>Currency</th>
+              <th>Category</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123456789</td>
+              <td>987654321</td>
+              <td>10</td>
+              <td>EUR</td>
+              <td>Pleasure</td>
+              <td>18-01-2023</td>
+           </tr>
+         </tbody>
+      </Table>
+      </>
+    )
+  }
+} 
+
+...
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-3 | markdownify }}</div>
+
+Again quite ugly, so let's change this.
