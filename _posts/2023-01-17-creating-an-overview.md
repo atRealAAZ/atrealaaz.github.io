@@ -312,4 +312,61 @@ class Overview extends Component {
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_card.png" alt="">
 
-Looking quite nice, let's center it. 
+The Table itself looks decent, but is far too wide and not centered. Let's change that.
+
+First let's add a ```div``` element so that we can work CSS magic on it:
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Overview from './subcomponents/overview/Overview'
+
+function App() {
+  return (
+    <div class = "app">
+      <Overview/>
+    </div>
+  );
+}
+
+export default App;
+
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+We then edit our ```App.css``` file to make everything centered, by adding the following code:
+
+{% capture notice-2 %}
+frontend/src/App.css
+```css
+...
+
+.app {
+  background-color: #F5F5F5;
+  height: 100vh;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+```
+{% endcapture %}
+
+[EXPLAIN FLEXBOX]
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+giving us a nice centered look and a nice background color for extra contrast:
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_centered.png" alt="">
+
+Nice, our overview part is done! Let's move on to the next part!
+
+
+
