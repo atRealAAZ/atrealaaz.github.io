@@ -107,7 +107,7 @@ in the terminal. We then add the following code:
 class AccountInformation extends Component {
   render () {
     return (
-      <Table striped bordered hover>
+      <Table>
         <thead>
           <tr>
             <th>Name</th>
@@ -127,7 +127,7 @@ class AccountInformation extends Component {
   }
 }
 ```
-
+The Table component makes use of the header and the body (thead and tbody). In there for each row (tr) you add an element for the header (th) and body (td).
 We then move back to ```App.js``` and add 
 ```
 import Overview from './subcomponents/overview/Overview'
@@ -175,7 +175,7 @@ class TransactionTable extends Component {
   render () {
     return (
       <>
-        <Table striped bordered hover>
+        <Table>
           <thead>
             <tr>
               <th>Transaction ID</th>
@@ -210,4 +210,106 @@ class TransactionTable extends Component {
 
 <div class="notice">{{ notice-3 | markdownify }}</div>
 
-Again quite ugly, so let's change this.
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/account_info_tx_table.png" alt="">
+
+Again quite ugly, so let's change this. 
+
+We install ```bootstrap``` by running
+```
+npm install bootstrap
+```
+and make the following modifications to the ```index.js``` file:
+
+{% capture notice-3 %}
+frontend/src/index.js
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-3 | markdownify }}</div>
+
+By importing the bootstrap template, we can make use of improved graphics. Our table suddenly looks much nicer:
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_bootstrap.png" alt="">
+
+Still, everything is very white. By making a small modification to the code there is more contrast:
+
+
+{% capture notice-3 %}
+frontend/src/subcomponents/overview/Overview.js
+```javascript
+...
+
+class AccountInformation extends Component {
+  render () {
+    return (
+      <Table striped bordered hover>
+
+... 
+
+class TransactionTable extends Component {
+  render () {
+    return (
+      <>
+        <Table striped bordered hover>
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-3 | markdownify }}</div>
+
+resulting in:
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_bootstrap_gray.png" alt="">
+
+Already looking much better!
+
+Let's wrap it in a Card to give it a more natural look, with some distance to the edges:
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+...
+import {Table, Card} from 'react-bootstrap'
+
+class Overview extends Component {
+  render () {
+    return (
+      <>
+        <Card>
+          <Card.Body>  
+            <AccountInformation/>
+          </Card.Body>
+          <Card.Body>
+            <TransactionTable/>
+          </Card.Body>
+        </Card>
+      </>
+    )
+  }
+}
+
+...
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_card.png" alt="">
+
+Looking quite nice, let's center it. 
