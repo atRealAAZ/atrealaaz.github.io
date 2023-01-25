@@ -24,14 +24,14 @@ We now have a folder structure as follows:
 
 Our application will consist of multiple subcomponents, one of them being our Overview.
 
-We will create a new ```subcomponents``` folder in the ```src``` folder which will contain the code for our Overview. This is good practice, keeping the code for several systems separate. In there we will create a new folder called overview, which will house our ```Overview.js``` code. Anytime you want to debug or change some code, you know the folder it will be in. 
+We will create a new ```subcomponents``` folder in the ```src``` folder which will contain the code for our Overview. This is good practice, keeping the code for several systems separate. In there we will create a new folder called ```main```, which will house our main functionality. This will house our ```Overview.js``` code. Anytime you want to debug or change some code, you know the folder it will be in. 
 
 The folder structure is then as follows:
 
 ```
 src 
  - subcomponents
-   - overview
+   - main
      - Overview.js
    - other subcomponents to be added
 ```
@@ -281,7 +281,7 @@ Already looking much better!
 Let's wrap it in a Card to give it a more natural look, with some distance to the edges:
 
 {% capture notice-2 %}
-frontend/src/App.js
+frontend/src/subcomponents/overview/Overview.js
 ```javascript
 ...
 import {Table, Card} from 'react-bootstrap'
@@ -365,6 +365,44 @@ frontend/src/App.css
 giving us a nice centered look and a nice background color for extra contrast:
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_centered.png" alt="">
+
+Nice. Now let's add a Button that will enable us to initiate a transfer:
+
+
+{% capture notice-2 %}
+frontend/src/subcomponents/overview/Overview.js
+```javascript
+...
+import {Table, Card, Button} from 'react-bootstrap'
+
+class Overview extends Component {
+  render () {
+    return (
+      <>
+        <Card>
+          <Card.Body>  
+            <AccountInformation/>
+          </Card.Body>
+          <Card.Body>
+            <Button 
+              variant="primary">Transfer 
+            </Button>
+            <TransactionTable/>
+          </Card.Body>
+        </Card>
+      </>
+    )
+  }
+}
+...
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+[EXPLAIN BUTTON] The ```variant="primary"``` means we get a Blue button, because I'm getting a bit sick of all the white/grey:
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_w_button.png" alt="">
 
 Nice, our overview part is done! Let's move on to the next part!
 
