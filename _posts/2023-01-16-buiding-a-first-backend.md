@@ -42,11 +42,7 @@ We now have Flask installed and are ready to build our first application!
 
 <h1>Building our first application</h1>
 
-While still in the backend folder, let's create our main file.
-
-```
-echo main.py
-```
+While still in the backend folder, let's create a file called ```backend.py```
 
 In this file, we'll write the following code. 
 
@@ -69,13 +65,47 @@ Run the code by using:
 flask --app backend run
 ```
 
+This way it invokes the flask program to run, using <i>backend</i> as the value for the <i>app</i> variable. 
+
 It will show the following: 
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_2/1.png" alt="">
 
 Well done, you have now created your first Flask application!
 
+Since at some point we want to run our application with many environment variables, the command will become bloated. Let's change that. 
+
+Within our virtual environment, we run the command: 
+
+```
+(venv) $ pip install python-dotenv
+```
+
+In our <i>backend</i> folder we then create a file called ```.flaskenv``` with the following code:
 
 
+{% capture notice-2 %}
+backend/.flaskenv
+```
+FLASK_APP=backend.py
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+This way, everytime time <i>flask</i> is run it will check the <i>.flaskenv</i> file and load all the variables in the environment, saving us from having to type the environment variables every time on startup. Nice! 
+
+We will add another variable, since later we will be running our backend on port 5001, not 5000.
+
+
+{% capture notice-2 %}
+backend/.flaskenv
+```
+FLASK_APP=backend.py
+FLASK_RUN_PORT=5001
+```
+{% endcapture %}
+
+<div class="notice">{{ notice-2 | markdownify }}</div>
 
 

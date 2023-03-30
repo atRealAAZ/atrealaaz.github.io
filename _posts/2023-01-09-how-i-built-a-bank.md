@@ -5,7 +5,7 @@ tags:
   - Focus
 ---
 
-I don't know about you, but the way for me to learn is to do. Reading or hearing about something is nice, but until I've programmed something myself I can't be sure whether I have truly understood the concepts. Until I can reproduce something, I haven't mastered something. Building is the crucible on which conceptions are shattered and you come face to face with the reality of your situation. Are you a nerd - or a newb? 
+I don't know about you, but the way for me to learn is to do. Reading or hearing about something is nice, but until I've programmed something myself I can't be sure whether I have truly understood the concepts. Until I can reproduce, I am no master. Creating is the crucible on which conceptions and illusions are shattered and you come face to face with the reality of your situation. Are you a nerd - or a newb? 
 
 So I built a bank. 
 
@@ -13,7 +13,7 @@ How?
 
 That's what I'll tell you in the coming blog post series. 
 
-We have to answer the question first; what is a bank? Good question. A bank is according to the definition of Wikipedia a financial institution that accepts deposits into an account. These deposits can then be transferred to other accounts. For all intents and purposes the core functionality is thus the ability to transfer funds of one account to another. But what, this is something we can build!
+We have to answer the question first; what is a bank? Good question. A bank is according to the definition of a great online repository of wisdom, something that my good friend Mr. Socratic Bank will explain. Welcome Mr. Bank. What are you? "Well, I'm a financial institution that accepts deposits into an account. These deposits can then be transferred to other accounts. For all intents and purposes the core functionality is thus the ability to transfer funds of one account to another. But what, this is something we can build!
 
 Before we get into it, however, I'll show you what it's going to look like. 
 
