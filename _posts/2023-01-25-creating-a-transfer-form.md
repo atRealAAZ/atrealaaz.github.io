@@ -170,7 +170,7 @@ import TransferPage from './subcomponents/main/Transfers'
 
 function App() {
   return (
-    <div class = "app">
+    <div className = "app">
       <TransferPage/>
     </div>
   );
@@ -332,7 +332,7 @@ frontend/src/App.js
 class App extends Component {
   render() {
     return (
-      <div class = "app">
+      <div className = "app">
         <TransferPage/>
       </div>
     )

@@ -39,7 +39,7 @@ frontend/src/App.js
 class App extends Component {
   render() {
     return (
-      <div class = "app">
+      <div className = "app">
         <TransferPage/>
       </div>
     )
@@ -101,7 +101,7 @@ class App extends Component {
 
   render() {
     return (
-      <div class = "app">
+      <div className = "app">
         {this.state.route === 'overview' 
         ?
           <Overview/>

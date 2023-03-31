@@ -316,7 +316,7 @@ backend/bank/main/routes.py
 ...
 
 def validate_transaction(username, transaction_details):
-    amount, to_account, currency = transaction_details.values()
+    to_account, amount, currency = transaction_details.values()
     try:
         amount = int(amount)
     except:
@@ -419,8 +419,8 @@ class App extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: this.state.name,
-                transactionDetails: this.state.transactionDetails
+                username: this.state.username,
+                txDetails: this.state.txDetails
             })
         }
         let response = await (await fetch('http://127.0.0.1:5001/send_transaction', requestOptions)).json()
@@ -435,21 +435,21 @@ class App extends Component {
 
 What this method does is that everytime the sendTransaction method is invoked, it will send certain information from the current state in JSON form to the http://127.0.0.1:5001/send_transaction, which is the address of our backend, and more specifically the backend method that validates the transactions, since that method is listening to that address. Our backend function is run which validates the transaction and adds the transaction to the database if validated, and returns a validation boolean and a message, which it assigns to the _response_ variable. It will then display the message to our user. Based on the message we will know whether it succeeded. 
 
-We also add the following code (adding initialTransactionDetails and modifying initialState) iwhich we will need for later:
+We also add the following code (adding initialTxDetails and modifying initialState) iwhich we will need for later:
 
 {% capture notice-2 %}
 frontend/src/App.js
 ```javascript
-const initialTransactionDetails = {
-  txAmount: 0,
+const initialTxDetails = {
   txToAccount: '',
+  txAmount: 0,
   txCurrency: ''
 }
 
 const initialState = {
   username: '',
   route: 'overview',
-  transactionDetails: initialTransactionDetails
+  txDetails: initialTxDetails
 }
 ```
 {% endcapture %}
@@ -469,7 +469,7 @@ class App extends Component {
 
     render() {
         return (
-        <div class = "app">
+        <div className = "app">
             {this.state.route === 'overview' 
             ?
             <Overview
@@ -561,6 +561,130 @@ Run the backend by typing in your terminal (in your virtual env)
 ```
 
 Now navigate to the Transfer page and click on Transfer. If everything went alright you should now see a notification with 'Account does not exist!'
+
+This is because the message looks at the username that is currently saved in state and sends it to the backend. However, since at no point has the username attribute been changed, that means that it will send the username value of the current state, which is ''. We didn't build the functionality yet that changes this attribute. Let's do that now. 
+
+When we fill in values for _To Account_, _Amount_ and _Currency_, these values are saved nowhere. We have to ensure that the values that are filled in are saved somewhere so that when the Transfer button is cicked (which sends the current information to the backend) it can retrieve the saved information. How will we do this? If you answered with _state_ you are getting the hang of this!
+
+So what we want to do is we want to have a function that 'listens' to these three fields, and everytime something is entered there the state should be updated to contain these updated values. We do this in the following way by going to our _App.js_ file in our _App_ component before our _render()_ method.
+
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+    ...
+
+class App extends Component {
+
+    ...
+
+    onFormTextChange = (object, key, value) => {
+        this.setState({
+            [object]: {
+                ...this.state[object],
+                [key]: value
+            }
+        })
+    }
+
+    ...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+What this function does is that of the _state_ object it changes the particular object that is passed as a variable. As we remember from our state we had several objects there (so far _username_, _route_ and _txDetails_). We only want to change the _txDetails_ So what it does it changes the _key_ attribute of the _txDetails_ of the _state_ to the _value_ we provide it. In this way we can use the same function for the different fields, we just need to provide which field we want to change. 
+
+Ok nice, now we need to have our lower-level components inherit this method, in our TransferPage component in our App render() method: 
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+...
+
+class App extends Component {
+
+    ...
+
+    render() {
+            ...
+
+            <TransferPage
+            onRouteChange = {this.onRouteChange}
+            sendTransaction = {this.sendTransaction}
+            onFormTextChange = {this.onFormTextChange}
+
+            />
+        
+        ...
+    }
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+and in our TransferForm, where we add our method to the onChange attribute to both the TransferPage and the TransferForm components:
+
+
+{% capture notice-2 %}
+frontend/src/subcomponents/main/Transfers.js
+```javascript
+...
+
+class TransferPage extends Component {
+
+        ...
+        <Card>
+          <Card.Body>
+            <TransferForm
+            onFormTextChange = {this.props.onFormTextChange}
+            />
+            ...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+
+{% capture notice-2 %}
+frontend/src/subcomponents/main/Transfers.js
+```javascript
+...
+
+class TransferForm extends Component {
+          ...
+          <Form.Group className="mb-3">
+            <Form.Label>To Account</Form.Label>
+            <Form.Control 
+            onChange = {(event) => {this.props.onFormTextChange('txDetails', 'txToAccount', event.target.value)}}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Amount</Form.Label>
+            <Form.Control 
+            onChange = {(event) => {this.props.onFormTextChange('txDetails', 'txAmount', event.target.value)}}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Currency</Form.Label>
+            <Form.Control 
+            onChange = {(event) => {this.props.onFormTextChange('txDetails', 'txCurrency', event.target.value)}}
+            />
+          </Form.Group>  
+          ...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+onChange is a built in attribute, which means that everytime a change is detected (typing into the field among them), it will invoke the onFormTextChange method. This method will itself look at the text that is entered into the field (event.target.value), which it will save to the state. This means that now everytime you type something into the fields, the text is saved to the state so that it can be used later. Nice!
+
+So now everytime you change the fields, the info is saved, and when you press the _Transfer_ button, it will send that saved info to the backend to be processed. Very impressive! Well done! 
+
+Are we done already? Unfortunately not. Everything works, but there is no account to send it to. Remember that in the backend a query is run that will check the database for the account that is entered. Well currently our database is empty which means that no account will be found. How can we create an account? We will do that when we sign up, which will be covered in our next section.
+
+
+
+
+
+
+
 
 
 

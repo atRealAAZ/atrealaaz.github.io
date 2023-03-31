@@ -1,5 +1,5 @@
 ---
-title: "Part 3: Creating an overview"
+title: "Part 3: Creating an Overview"
 date: 2023-01-17
 tags:
   - Focus
@@ -325,7 +325,7 @@ import Overview from './subcomponents/overview/Overview'
 
 function App() {
   return (
-    <div class = "app">
+    <div className = "app">
       <Overview/>
     </div>
   );
