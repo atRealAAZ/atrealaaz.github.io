@@ -26,16 +26,16 @@ These are strange times.
 
 It makes me think of work, and life. As a modeller of risk, I spend my entire work-life on quantifying risk to protect the bank, but when a situation emerges that has the ability to shake the bank to its very foundation: we are powerless. Powerless, despite our advanced statistical methods and programming prowess. The true risk, we cannot model. The true risk, we cannot manage.
 
-It should remind us that the highest-impact events are unpredictable. They are so rare that history cannot be our teacher. We simulate possible scenarios and prepare but this… no one could have foreseen. And if the unpredictable rare event has such an outsized impact, we have to wonder and reflect how much we can really do.
+It should remind us that what is most impactful is inherently unpredictable. They are so rare that history cannot be our teacher. We simulate possible scenarios and prepare but this… no one could have foreseen. And if the unpredictable rare event has such an outsized impact, we have to wonder and reflect how much we can really do.
 
 
-This is a stark reminder that we should not pretend we can predict the future. Because if we pretend otherwise we become overconfident, and only then can we be blindsided by an event like this. Perhaps we should focus not on trying to predict the future but on being prepared when fate strikes.
+This is a stark reminder that we should not pretend we can predict the future. Because if we pretend otherwise we become overconfident, and only then can we be blindsided. Perhaps we should focus not on trying to predict the future but on being prepared when fate strikes.
 
 
 And in these times when we are farther from everyone than ever, it is of the utmost important that we remain strong and support each other. Because the need has never been greater than it is today. Only by sticking together do we get through this. The lone wolf dies, but the pack survives.
 
 
-And although this situation is destroying everyone’s plans, perhaps we can benefit from it. Given the fact that this is the status quo, the only sensible strategy is to make the most out of it. Perhaps you discover a passion for running now that all the gyms are closed. Perhaps you discover a passion for cooking now that all restaurants are closed. In times like these, it shows us how adaptable we are, and that we have the ability to make the best of any situation, no matter the circumstances.
+And although this situation is destroying everyone’s plans, perhaps we can benefit from it. Given that this is the status quo, the only sensible strategy is to make the most out of it. Perhaps you discover a passion for running now that the gym is closed. Perhaps you discover a passion for cooking now that all restaurants are closed. In times like these, it shows us how adaptable we are, and that we have the ability to make the best of any situation, no matter the circumstances.
 
 
 The situation may seem bleak now, but we must remain strong while our scientists find a cure. Because never forget there is a light at the end of the tunnel…

@@ -232,7 +232,7 @@ from bank import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(64), index = True, unique = True)
-    email = db.Column(db.String(128), unique = True)
+    email = db.Column(db.String(128), index = True, unique = True)
     password = db.Column(db.String(128))
     account_number = db.Column(db.String(18))
     balance = db.Column(db.Integer)
@@ -279,10 +279,10 @@ def add_tx_to_db(
     username, 
     transaction_details, 
 ):
-    amount, to_account, currency = transaction_details.values()
+    to_account, amount, currency = transaction_details.values()
     amount = int(amount)
-    user_sender = User.query.filter_by(username = username).first()
-    user_receiver = User.query.filter_by(account_number = to_account).first()
+    user_sender = db_query(User, 'username', username)[1]
+    user_receiver = db_query(User, 'account_number', to_account)[1]
     today = datetime.strftime(datetime.today(), "%d-%m-%Y")
     tx = Transaction(
         from_account = user_sender.account_number,
@@ -305,6 +305,30 @@ def add_tx_to_db(
 {% endcapture %}
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
+The db_query is a function that I add in a _utils.py_ file, since all subfunctions of the app may make use of it:
+
+{% capture notice-2 %}
+backend/bank/utils.py
+```python
+
+def db_query(
+    db_model, db_col, search_term
+):
+    filters = {db_col: search_term}
+    query = (
+        db_model
+        .query
+        .filter_by(**filters)
+        .first()
+    )
+    if query == None:
+        return False, query
+    else: 
+        return True, query
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
 So what happens is that we assume we will get a dictionary with the amount of the transaction, the account it is sent to, and the currency (Remember we hadd these fields in our TransferForm that we built previously). We transform
 the _amount_ variable to an _int_, since in our dictionary it became a _string_. Since our program only knows our username, it will obtain the account number belonging to this username from the database, as well as the user that the transfer is made to. We then have all the fields that we need to define our new transaction in the database, which we do. We subtract the amount from the sender's balance and add it to the receiver's. We then commit this transaction to the database so that it is saved there. 
 
@@ -321,8 +345,8 @@ def validate_transaction(username, transaction_details):
         amount = int(amount)
     except:
         return False, "Invalid amount."
-    user = User.query.filter_by(username = username).first()
-    to_account_query = User.query.filter_by(account_number = to_account).first()
+    user = db_query(User, 'username', username)[1]
+    to_account_query = db_query(User, 'account_number', to_account)[1]
     if to_account_query == None:
         return False, "Account does not exist!"
     if to_account == user.account_number:
@@ -352,8 +376,7 @@ backend/bank/main/routes.py
 @app.route('/send_transaction', methods = ['GET', 'POST'])
 def send_transaction():
     message = request.get_json()
-    username = message['username']
-    transaction_details = message['transactionDetails']
+    username, transaction_details = message.values()
     validated, validation_msg = validate_transaction(
         username, transaction_details
     )
@@ -375,10 +398,11 @@ Everytime we get a request, we obtain the transaction information from the reque
 
 The gen_result_dict is a function that I add in a utils file, since all subfunctions of the app may make use of it:
 
-
 {% capture notice-2 %}
 backend/bank/utils.py
 ```python
+...
+
 def gen_result_dict(**kwargs):
     return kwargs
 ```
