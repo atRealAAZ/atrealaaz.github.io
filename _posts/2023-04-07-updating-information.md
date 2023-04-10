@@ -138,7 +138,7 @@ We go to our main/routes.py file:
 
 {% capture notice-2 %}
 backend/bank/main/routes.py
-```javascript
+```python
 ...
 
 def fetch_transactions(account_number):
@@ -151,11 +151,11 @@ def fetch_transactions(account_number):
     ).order_by(
         Transaction.id.desc()
     )
-    txs = tx_query.all()
-    # paginated_tx = get_paginated_object(tx_query)
-    if len(tx_query.all()) == 0:
+    txs_raw = tx_query.all()
+    if len(txs_raw) == 0:
         return False, []
     else:
+        txs = get_dicts(txs_raw)
         return True, txs
 
 def get_overview(user):
@@ -178,7 +178,47 @@ def get_overview(user):
 {% endcapture %}
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
-What happens here is that BLA EXPLAIN
+What happens here is that we query the database for all transactions that were sent by the user, then we query the database for all the transactions that were received by the user (since we want both), and then we take the union of that, resulting in all our transactions we are interested in. However, it returns a list of Transaction objects, which cannot be sent to our frontend since it is not in JSON format. When we query it it looks like this: 
+
+```
+>>> Transaction.query.first().__dict__
+{'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x000001C3B82AA320>, 
+'from_account': '1', 'to_account': '2', 'currency': 'EUR', 'amount': 1, 'id': 1, 'date': 'now'}
+>>>
+```
+All the info in there we want, except the _sa_instance_state which is not relevant for us directly. 
+
+For that we add some code to _utils.py_:
+
+{% capture notice-2 %}
+backend/bank/utils.py
+```python
+...
+
+def get_dict_from_object(
+    sqlalchemy_obj, 
+    to_exclude = '_sa_instance_state'
+):
+    db_dict = sqlalchemy_obj.__dict__
+    new_dict = {
+        key: db_dict[key]
+        for key in db_dict.keys()
+        if key not in to_exclude
+    }
+    return new_dict
+
+def get_dicts(query):
+    return [
+        get_dict_from_object(obj) for obj in query
+    ]
+
+...
+  
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+In the _get_dict_from_object_ we take a SQLAlchemy object, and create dict copying all values into that new dict, skipping the ones from the to_exclude list. Since we have a list of objects, we need to do this for every object in the list. We then have our result at the backend. We move back to our frontend.
 
 We add another object to our state:
 
@@ -236,6 +276,206 @@ class App extends Component {
 ```
 {% endcapture %}
 <div class="notice">{{ notice-2 | markdownify }}</div>
+
+Every time we login all our transactions are now fetched, but the table is not updated. Let's change that. 
+
+We go to _Overview.js_ where we have our TransactionTable inherit the state and we change our TransactionTable component:
+
+{% capture notice-2 %}
+frontend/src/subcomponents/main/Overview.js
+```javascript
+...
+
+class Overview extends Component {
+  render()
+        ...
+          <TransactionTable
+            state = {this.props.state}
+          />
+        ...
+
+...
+
+class TransactionTable extends Component {
+  render () {
+    let txTable = this.props.state.txTable
+    return (
+      <>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>From Account</th>
+              <th>To Account</th>
+              <th>Amount</th>
+              <th>Currency</th>
+              <th>Category</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+          {txTable.tx_exists
+          ?
+            txTable.txs.map((tx) => (
+              <tr>
+                <td>{tx.id}</td>
+                <td>{tx.to_account}</td>
+                <td>{tx.from_account}</td>
+                <td>{tx.amount}</td>
+                <td>{tx.currency}</td>
+                <td>{tx.date}</td>
+              </tr>  
+              )
+            )
+          :
+            <p>No transactions found!</p>
+          }     
+         </tbody>
+      </Table>
+      </>
+    )
+  }
+} 
+
+...
+  
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+In there we remove our placeholder code. We first check if there are any transactions (tx_exists = true), if there aren't we display the text of _No transactions found!_. If there are transactions, we display one transaction per row using the elements from the JSON object. 
+
+Nice!
+
+Everything will now work. If you create two accounts using our Register functionality, and send a few transactions from one account to the other, it now looks like this: 
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_overview/updated_tx_table.PNG" alt="">
+
+Try it!
+
+There is one minor thing that still needs to be fixed. If we send a transaction, and we go back to our overview, our table is not updated. This is because clicking on the 'Overview' button in Navigation merely moves us to the overview, but a new query on the database is not run with the updated numbers. We want this to happen everytime we go back to our Overview. 
+
+We already have most of our logic in our register and login methods. I could change the existing methods, but since I want to keep it clean I'll just add another small method that just queries the database in the backend, while keeping the same frontend method (onAuthentication). We do this in 
+
+{% capture notice-2 %}
+backend/bank/main/routes.py
+```python
+...
+
+@app.route('/get_overview_route', methods = ['GET', 'POST'])
+def get_overview_route():
+    message = request.get_json()
+    _, username, _ = message.values()['loginDetails']
+    user = db_query(User, 'username', username)[1]
+    result = get_overview(user)
+    return gen_result_dict(
+        success = True, 
+        result = result
+    )
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+We just get the username, query the database for the overview, and return the result. 
+
+In our Navigation we change the route that is invoked:
+
+{% capture notice-2 %}
+frontend/src/subcomponents/navigation/Navigation.js
+```javascript
+...
+
+class Navigation extends Component {
+  render () {
+    return (
+      <>
+        <Navbar fixed = "top" className="justify-content-end">
+          <Button 
+            variant = "primary"
+            onClick = {() => {this.props.onAuthentication('get_overview_route')}}
+            >Overview
+          </Button>
+        ...
+
+...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+We now need to add that method to our Navigation component:
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+...
+class App extends Component {
+
+  render() {
+          : this.state.route === 'transfer'
+          ?
+            <TransferPage
+            onRouteChange = {this.onRouteChange}
+            sendTransaction = {this.sendTransaction}
+            onFormTextChange = {this.onFormTextChange}
+            onAuthentication = {this.onAuthentication}
+
+...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+
+{% capture notice-2 %}
+frontend/src/subcomponents/main/Transfers.js
+```javascript
+...
+class TransferPage extends Component {
+  render () {
+    return (
+      <>
+        <Navigation
+        onRouteChange = {this.props.onRouteChange}
+        onAuthentication = {this.props.onAuthentication}
+
+...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+We also change one last thing in App.js, since our Authentication methods all had messages, but we don't want to show one if you just move to your overview, we have to account for that:
+
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+...
+class App extends Component {
+
+  onAuthentication = async (route) => {
+    ...
+    if (success) {
+        this.setState({
+          ...this.state,
+          route: 'overview',
+          acctDetails: result['account_details'],
+          txTable: result['tx_table']
+        })
+      }
+      if (route !== 'get_overview_route') {
+        alert(message)
+      }
+    ...
+
+...
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
+
+This way we don't want to show a message if one goes to their own overview. Nice!
+
+Everything works now! Well done, try it!
+
+
 
 
 
