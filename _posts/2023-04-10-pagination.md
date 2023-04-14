@@ -300,53 +300,12 @@ class Overview extends Component {
 
 class TransactionTable extends Component {
   render () {
-    let txTable = this.props.state.txTable
-    return (
-      <>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Transaction ID</th>
-              <th>From Account</th>
-              <th>To Account</th>
-              <th>Amount</th>
-              <th>Currency</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-          {txTable.tx_exists
-          ?
-            txTable.txs[txTable.page].items.map((tx) => (
-              <tr>
-                <td>{tx.id}</td>
-                <td>{tx.to_account}</td>
-                <td>{tx.from_account}</td>
-                <td>{tx.amount}</td>
-                <td>{tx.currency}</td>
-                <td>{tx.date}</td>
-              </tr>  
-              )
-            )
-          :
-            <p>No transactions found!</p>
-          }     
-         </tbody>
-        </Table>
-        {txTable['tx_exists']
-        ?
+        ...
           <Pagination
           txTable = {txTable}
           onNavigatePagination = {this.props.onNavigatePagination}
           />
-        :
-          <>
-          </>
-        }
-      </>
-    )
-  }
-} 
+        ...
 
 
 class Pagination extends Component {
