@@ -9,7 +9,7 @@ Imagine molecules.
 
 Are you imagining them? You must be. You are made up of them. 
 
-And the funny part is that in the imagining of molecules, molecules are involved. How poetic, that the conceptualization of something is realzed by that same thing. 
+And the funny part is that in the imagining of molecules, molecules are involved. How poetic, that the conceptualization of something is realized by that same thing. 
 
 And not just in imagining them. Every process in your body uses it. 
 
