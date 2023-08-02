@@ -9,7 +9,7 @@ Imagine molecules.
 
 Are you imagining them? You must be. You are made up of them. 
 
-And the funny part is that in the imagining of molecules, molecules are involved. 
+And the funny part is that in the imagining of molecules, molecules are involved. How poetic, that the conceptualization of something is realzed by that same thing. 
 
 And not just in imagining them. Every process in your body uses it. 
 
@@ -17,7 +17,7 @@ And not just your body. Everything around you, everything in the universe, all o
 
 The beauty of molecules is that with only 4 basic atoms (carbon, hydrogen, oxygen, nitrogen), and perhaps a few more exotic ones strewn in, all of life in history, with its infinite variation is possible. 
 
-And did you know that if you take the chemical symbols for the four most common elements in the human body and rearrange them, you spell NaCHO? Yeah, if that doesn't prove we live in a simulation or we are the experiment of some hypernatural entities that got bored, I don't know what is. 
+And did you know that if you take the chemical symbols for the four most common elements in the human body and rearrange them, you spell NaCHO? Yeah, if that doesn't prove we live in a simulation or we are the experiment of some hypernatural entities that got bored, I don't know what does. 
 
 (Ok you probably looked it up and realized that it is actually NCHO. But hey, Na (Sodium, such a weird abbreviation) is also important in our bodies, so hey, close enough.)
 
