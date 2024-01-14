@@ -104,6 +104,10 @@ npm install react-bootstrap
 in the terminal. We then add the following code:
 
 ```javascript
+...
+import {Table} from react-bootstrap
+...
+
 class AccountInformation extends Component {
   render () {
     return (
@@ -130,7 +134,7 @@ class AccountInformation extends Component {
 The Table component makes use of the header and the body (thead and tbody). In there for each row (tr) you add an element for the header (th) and body (td).
 We then move back to ```App.js``` and add 
 ```
-import Overview from './subcomponents/overview/Overview'
+import Overview from './subcomponents/main/Overview'
 ```
 add the top, so that the App can use the Overview component. We also add our imported Overview component and put it in the App function. Our ```App.js```
 will then look like this:
