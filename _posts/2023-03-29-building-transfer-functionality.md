@@ -551,7 +551,7 @@ pip install flask-cors
 and change our initialization file:
 
 {% capture notice-2 %}
-frontend/src/subcomponents/main/Transfers.js
+backend/bank/__init__.py
 ```python
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
