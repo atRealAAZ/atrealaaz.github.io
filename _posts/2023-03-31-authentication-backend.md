@@ -147,6 +147,12 @@ from bank import app, db
 from config import Config
 
 ...
+def get_idx():
+  return len(
+    User
+    .query
+    .all()
+  )
 
 def add_user_to_db(username, email, password):
     user_idx = get_idx()
