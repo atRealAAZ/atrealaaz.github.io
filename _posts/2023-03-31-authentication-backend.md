@@ -267,6 +267,36 @@ from bank.authentication import routes, models
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
 Our backend functionality now works, so we have to connect it to the frontend.
+Let's first write the method:
+
+{% capture notice-2 %}
+frontend/src/App.js
+```javascript
+...
+
+class App extends Component {
+  ...
+
+  onAuthentication = async (route) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        loginDetails: this.state.loginDetails
+      })
+    }
+    let response = await (
+      await fetch(
+        'http://127.0.0.1:5001/' + route, requestOptions
+      )
+    ).json()
+  }
+}
+```
+{% endcapture %}
+<div class="notice">{{ notice-2 | markdownify }}</div>
 
 {% capture notice-2 %}
 frontend/src/App.js
