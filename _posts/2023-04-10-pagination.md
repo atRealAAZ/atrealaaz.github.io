@@ -83,7 +83,7 @@ def fetch_transactions(account_number):
     if len(txs_raw) == 0:
         return False, []
     else:
-        paginated_txs = get_paginated_object(txs_raw)
+        paginated_txs = get_paginated_object(tx_query)
         return True, paginated_txs
 
 def get_overview(user):
