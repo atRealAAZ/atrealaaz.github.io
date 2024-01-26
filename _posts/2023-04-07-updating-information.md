@@ -230,7 +230,7 @@ frontend/src/App.js
 
 const initialTxTable = {
   exists: false,
-  tx: []
+  txs: []
 }
 
 const initialState = {
