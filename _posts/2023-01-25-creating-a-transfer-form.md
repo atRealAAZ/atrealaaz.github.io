@@ -13,7 +13,7 @@ However, for it to list transactions, we need to be able to make some!
 
 So what would our transfer functionality have to look like? We of course would have to be able to enter the account number we are sending the money to, together with the amount, and currency. Something along the lines of this:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_transfer/transfer_form.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_transfer/transfer_form.PNG" alt="">
 
 <h1>Creating the Transfer Form</h1>
 
@@ -51,8 +51,6 @@ export default TransferPage
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
 We will use our newly-found ```Card``` components, to fill it up, together with a ```Form``` component.
-
-[EXPLAIN FORM]
 
 Modifying our code to import these changes, it looks like this:
 
@@ -94,7 +92,7 @@ export default TransferPage
 
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
-[[EXPLAIN mb-3]] The ```className="mb-3"``` ensures we get some more space.
+The ```className="mb-3"``` ensures we get some more space.
 
 This is nice, but we also need to add a button that initiates the transfer. 
 
@@ -184,6 +182,6 @@ export default App;
 
 Saving and going to ```localhost:3000``` gives us: 
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_transfer/transfer_form_finished.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_transfer/transfer_form_finished.PNG" alt="">
 
 Nice!

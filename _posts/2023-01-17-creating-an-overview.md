@@ -14,13 +14,13 @@ What would we like to see? We would probably want to see our name, our account n
 
 Something along the lines of this:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_look.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_look.PNG" alt="">
 
 We will split this up in three parts, the account information part, the Transfer button, and the Transaction table.
 
 We now have a folder structure as follows:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/hierarchy.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/hierarchy.PNG" alt="">
 
 Our application will consist of multiple subcomponents, one of them being our Overview.
 
@@ -163,7 +163,7 @@ This also ensures that by making changes in ```Overview.js``` and saving, our en
 
 Checking our application, we see the following:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/account_info.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/account_info.PNG" alt="">
 
 Quite ugly, but it works!
 
@@ -214,7 +214,7 @@ class TransactionTable extends Component {
 
 <div class="notice">{{ notice-3 | markdownify }}</div>
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/account_info_tx_table.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/account_info_tx_table.PNG" alt="">
 
 Again quite ugly, so let's change this. 
 
@@ -249,7 +249,7 @@ reportWebVitals();
 
 By importing the bootstrap template, we can make use of improved graphics. Our table suddenly looks much nicer:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_bootstrap.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_bootstrap.PNG" alt="">
 
 Still, everything is very white. By making a small modification to the code there is more contrast:
 
@@ -278,7 +278,7 @@ class TransactionTable extends Component {
 
 resulting in:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_bootstrap_gray.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_bootstrap_gray.PNG" alt="">
 
 Already looking much better!
 
@@ -314,7 +314,7 @@ class Overview extends Component {
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_card.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_card.PNG" alt="">
 
 The Table itself looks decent, but is far too wide and not centered. Let's change that.
 
@@ -362,13 +362,11 @@ frontend/src/App.css
 ```
 {% endcapture %}
 
-[EXPLAIN FLEXBOX]
-
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
 giving us a nice centered look and a nice background color for extra contrast:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_centered.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_centered.PNG" alt="">
 
 Nice. Now let's add a Button that will enable us to initiate a transfer:
 
@@ -404,9 +402,9 @@ class Overview extends Component {
 
 <div class="notice">{{ notice-2 | markdownify }}</div>
 
-[EXPLAIN BUTTON] The ```variant="primary"``` means we get a Blue button, because I'm getting a bit sick of all the white/grey:
+The ```variant="primary"``` means we get a Blue button, because I'm getting a bit sick of all the white/grey:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_w_button.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_w_button.PNG" alt="">
 
 Nice, our overview part is done! Let's move on to the next part!
 
