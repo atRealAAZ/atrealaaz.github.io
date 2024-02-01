@@ -69,7 +69,7 @@ This way it invokes the flask program to run, using <i>backend</i> as the value 
 
 It will show the following: 
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_2/1.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_2/1.PNG" alt="">
 
 Well done, you have now created your first Flask application!
 

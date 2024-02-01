@@ -25,23 +25,23 @@ Before we get into it, however, I'll show you what it's going to look like.
 
 An account must be private, it must therefore be protected with user authentication:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankLogin.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankLogin.PNG" alt="">
 
 A new user must of course be able to register...
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankRegistration.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankRegistration.PNG" alt="">
 
 and be able to login where it shows an overview of its funds and transactions:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/EmptyOverview.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/EmptyOverview.PNG" alt="">
 
 We should also be able to transfer some money, the core functionality of our bank:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankTransfer.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankTransfer.PNG" alt="">
 
 Now, once a transfer has been made, it should be visible in our overview, which should be updated:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/OverviewTransaction.png" alt="" class="full">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/OverviewTransaction.PNG" alt="" class="full">
 
 Damn, this actually looks pretty manageable.
 
