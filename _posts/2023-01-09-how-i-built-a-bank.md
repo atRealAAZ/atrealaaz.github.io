@@ -25,11 +25,11 @@ Before we get into it, however, I'll show you what it's going to look like.
 
 An account must be private, it must therefore be protected with user authentication:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankLogin.PNG" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankLoginNEW.PNG" alt="">
 
 A new user must of course be able to register...
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankRegistration.PNG" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/BuildingABank/BankRegistrationNEW.PNG" alt="">
 
 and be able to login where it shows an overview of its funds and transactions:
 
