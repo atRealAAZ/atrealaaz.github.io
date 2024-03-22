@@ -53,7 +53,7 @@ And I built that myself. And soon, you can too!
 
 By flipping to the next page. Happy hacking!
 
-(Note: There's now a Udemy [course](https://www.udemy.com/course/build-a-bank-full-stack-app-development-using-react-flask/?referralCode=828CD949FA8CF18ECACF) available where you can code the app along with me.)
+(Note: There's now a Udemy [course](https://www.udemy.com/course/build-a-bank-full-stack-app-development-using-react-flask/?couponCode=1707FCB3499A14C3FCE1) available where you can code the app along with me.)
 
 
 

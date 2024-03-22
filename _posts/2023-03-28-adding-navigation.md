@@ -106,7 +106,7 @@ class Overview extends Component {
 
 It will look as follows:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_navbar.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_frontend_overview/overview_navbar.PNG" alt="">
 
 Great!
 

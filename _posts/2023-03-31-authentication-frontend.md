@@ -138,7 +138,7 @@ frontend/src/subcomponents/authentication/Authentication.css
 
 The first part will ensure that our text fields are a not as wide as the card and are centered horizontally in the card. The second that our card is a bit wider and has a darker color for more contrast between the background:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_auth/login_wo_button.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_auth/login_wo_button.PNG" alt="">
 
 We also need to be able to login once we have entered our information, and should we not have an account we should be able to go to a Register screen. For that we add some Buttons:
 
@@ -204,7 +204,7 @@ button {
 
 so that our button have equal widths (since the text does not have equal length) and there is some margin around them, making it look as follows: 
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_auth/login.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_auth/login.PNG" alt="">
 
 Great, we now have our Login form. We also need to create our Register form. It will look similar to the Login form but with an extra field:
 
@@ -261,7 +261,7 @@ class Register extends Component {
 
 looking as follows:
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_auth/register.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_auth/register.PNG" alt="">
 
 This is nice, but we need to be able to toggle between the two, that if I press 'To Login' I'm transported to the Login page and vice versa. 
 

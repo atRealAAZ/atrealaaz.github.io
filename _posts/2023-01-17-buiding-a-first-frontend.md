@@ -21,12 +21,12 @@ Verify they are installed by running
 ```
 node -v
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_3/node_v.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_3/node_v.PNG" alt="">
 
 ```
 npm -v
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_3/npm_v.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_3/npm_v.PNG" alt="">
 
 Ok nice, we can now start!
 <h1>Creating a React application</h1>
@@ -45,7 +45,7 @@ npm start
 ```
 You now have a running React application! Well done!
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_3/react_first.png" alt="">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/building_a_bank_3/react_first.PNG" alt="">
 
 Now, in the next section we will be adding functionality to this.
 
