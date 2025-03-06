@@ -5,15 +5,13 @@ tags:
   - Random
 ---
 
-Not a day goes by when some politician makes some comment about the economy. Taxes go up! No! Taxes go down! No, something else entirely!
+Not a day goes by when some politician makes some comment about the economy. Economy goes up if the taxes go down! No! No, economy go down! No, something else entirely!
 
 But what are all these statements based on?
 
 Hot air. Hot air and the delusions of of the many. 
 
-So let's take a bit more quantitative approach. 
-
-So let's simulate a society. 
+So let's take a bit more quantitative approach to the economy. Let's simulate it!
 
 We will build up the society slowly. We will define some macro-economic variables that all behaviour will interact on. These are Economic Health, Political Stability and Civil Liberties. Economic Health can be seen as a measure of how well the economy is doing. Political Stability can be seen as a measure of how stable the society is. Both of these are 
 important for a country. If one is low, the going gets tough. We can implement this as follows. Civil Liberties is a measure of how 'free' its citizens are.
@@ -252,7 +250,7 @@ class Society:
         natural_growth += (self.civil_liberties - 50)/50
         self.update_societal_parameters(natural_growth, 0, 0)
         #Ruling party will be attributed the growth
-        self.government.update_popularity(2 * (natural_growth - 3))
+        self.government.update_popularity((natural_growth - 3))
         print(f"The economy grew naturally by {round(natural_growth, 2)}.")
         #The ruling party's popularity is updated depending on the state of the economy
         self.government.update_popularity((self.economic_health - 50)/10)
@@ -260,7 +258,7 @@ class Society:
             #Every few years there will be an economic crisis
             economic_crisis = min(0, np.random.normal(-5, 4))
             self.update_societal_parameters(economic_crisis, 2 * economic_crisis, 0)
-            self.government.update_popularity(2 * economic_crisis)
+            self.government.update_popularity(economic_crisis)
             print(f"Economic crisis of {round(economic_crisis, 2)} hit!")
 ```
 where an event is defined as:
@@ -298,9 +296,9 @@ class Society:
       #Ruling party will be more criticized
         for party in self.parties:
             if party == self.government:
-                party.update_popularity(np.random.normal(-2, 2))
-            else:
                 party.update_popularity(np.random.normal(-1, 2))
+            else:
+                party.update_popularity(np.random.normal(0, 2))
       
 ```
 
@@ -324,9 +322,9 @@ class Society:
       #Ruling party will be more criticized
         for party in self.parties:
             if party == self.government:
-                party.update_popularity(np.random.normal(-2, 2))
-            else:
                 party.update_popularity(np.random.normal(-1, 2))
+            else:
+                party.update_popularity(np.random.normal(0, 2))
             if event(0.5):
                 #50% chance of scandal.
                 if event(self.civil_liberties):
@@ -350,9 +348,9 @@ class Society:
       #Ruling party will be more criticized
         for party in self.parties:
             if party == self.government:
-                party.update_popularity(np.random.normal(-2, 2))
-            else:
                 party.update_popularity(np.random.normal(-1, 2))
+            else:
+                party.update_popularity(np.random.normal(0, 2))
             if event(0.5):
                 scandal = np.random.choice(['Corruption', 'Infidelity', 'Bribery'])
                 #Higher civil liberties lead to higher probability of it getting to light.
@@ -456,7 +454,7 @@ class Society:
         civil_policy += np.random.normal(0, 1)
         print(f"""Due to policy the economy changed by {round(economic_policy, 2)}, politicical stability changed by {round(political_policy, 2)}, civil Liberties changed by {round(civil_policy, 2)}.""")
         self.update_societal_parameters(economic_policy, political_policy, civil_policy)
-        self.government.update_popularity(2 * economic_policy + political_policy + civil_policy)
+        self.government.update_popularity(economic_policy + political_policy + civil_policy)
 ```
 
 That's our governing module!
